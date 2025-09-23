@@ -20,7 +20,7 @@ rata2 = jumlah / 6
 # Nim
 NIM = 47
 
-Boolean = NIM < ratarata
+Boolean = NIM < rata2
 
 print("Suhu Celcius: ", suhu)
 print("Fahrenheit: ", fahrenheit)
