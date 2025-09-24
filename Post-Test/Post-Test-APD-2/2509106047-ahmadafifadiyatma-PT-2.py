@@ -3,7 +3,7 @@ suhu = [27, 33, 46, 55, 67, 92]
 
 # Konversi suhu
 # suhu_1 dan suhu_2 > Fahrenheit
-fahrenheit = [suhu[0] * 9/5 + 32, suhu[1] * 9/5 + 32]
+fahrenheit = [(9/5) * suhu[0] + 32, (9/5) * suhu[1] + 32]
 
 # suhu_3 dan suhu_4 > Kelvin
 kelvin = [suhu[2] + 273.15, suhu[3] + 273.15]
@@ -15,18 +15,18 @@ reamur = [suhu[4] * 4/5, suhu[5] * 4/5]
 jumlah = (fahrenheit[0] + fahrenheit[1] + kelvin[0] + kelvin[1] + reamur[0] + reamur[1])
 
 # Rata-rata
-ratarata = jumlah / 6
+rata2 = jumlah / 6
 
 # Nim
 NIM = 47
 
-bool = NIM < ratarata
+Boolean = NIM < rata2
 
 print("Suhu Celcius: ", suhu)
 print("Fahrenheit: ", fahrenheit)
 print("Kelvin: " , kelvin)
 print("Reamur: ", reamur)
 print("Jumlah semua suhu", jumlah)
-print("Rata-rata suhu", ratarata)
+print("Rata-rata suhu", rata2)
 print("NIM", NIM)
-print("Apakah NIM < ratarata", bool)
+print("Apakah NIM < ratarata", Boolean)
