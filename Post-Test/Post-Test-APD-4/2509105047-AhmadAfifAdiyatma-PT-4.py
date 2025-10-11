@@ -1,3 +1,4 @@
+# LOGIN
 while True:
     username = input("Masukkan username: ")
     password = input("Masukkan 3 digit NIM terakhir: ")
@@ -23,17 +24,25 @@ ulang = "Y"
 while ulang == "Y" or ulang == "y":
     gol = input("Golongan darah (A/B/AB/O): ")
 
-    if gol not in ["A", "a", "B", "b", "AB", "ab", "Ab", "aB", "O", "o"]:
+    # Validasi golongan darah
+    if gol != "A" and gol != "a" and gol != "B" and gol != "b" and gol != "AB" and gol != "ab" and gol != "Ab" and gol != "aB" and gol != "O" and gol != "o":
         print("Golongan darah tidak valid!")
-        continue  
+        continue
 
     rh = input("Rhesus (+/-): ")
 
-    if rh not in ["+", "-"]:
+    # Validasi rhesus
+    if rh != "+" and rh != "-":
         print("Rhesus tidak valid!")
-        continue 
+        continue
 
-    jml = int(input("Jumlah kantong darah: "))
+    # Input jumlah kantong darah
+    jumlah = input("Jumlah kantong darah: ")
+    if not jumlah.isdigit():
+        print("Input jumlah darah harus angka!")
+        continue
+
+    jml = int(jumlah)
 
     # Golongan A
     if gol == "A" or gol == "a":
@@ -48,7 +57,7 @@ while ulang == "Y" or ulang == "y":
         else:
             Bmin += jml * 500
     # Golongan AB
-    elif gol in ["AB", "ab", "Ab", "aB"]:
+    elif gol == "AB" or gol == "ab" or gol == "Ab" or gol == "aB":
         if rh == "+":
             ABplus += jml * 500
         else:
@@ -62,6 +71,7 @@ while ulang == "Y" or ulang == "y":
 
     ulang = input("Apakah mau input lagi (Y/T)? ")
 
+# MENAMPILKAN HASIL
 print("=== RINGKASAN DARAH TERKUMPUL ===")
 print("A+ :", Aplus, "ml")
 print("A- :", Amin, "ml")
@@ -70,4 +80,4 @@ print("B- :", Bmin, "ml")
 print("AB+:", ABplus, "ml")
 print("AB-:", ABmin, "ml")
 print("O+ :", Oplus, "ml")
-print("O-:",Omin,"ml")
+print("O- :", Omin, "ml")
