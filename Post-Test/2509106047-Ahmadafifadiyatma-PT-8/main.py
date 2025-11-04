@@ -1,36 +1,58 @@
 import login
 import admin
+import data
+import inquirer
 
 while True:
     if not login.login_admin():
         continue
 
     while True:
-        login.clear()
-        print("=== MENU UTAMA ===")
-        print("1. Lihat Buku")
-        print("2. Tambah Buku")
-        print("3. Ubah Buku")
-        print("4. Hapus Buku")
-        print("5. Logout")
-        print("6. Keluar")
+        pertanyaan = [
+            inquirer.List(
+                "menu",
+                message="Pilih menu:",
+                choices=[
+                    "Lihat Buku",
+                    "Tambah Buku",
+                    "Ubah Buku",
+                    "Hapus Buku",
+                    "Logout",
+                    "Keluar"
+                ],
+            )
+        ]
+        jawaban = inquirer.prompt(pertanyaan)
+        pilihan = jawaban["menu"]
 
-        pilih = input("Pilih menu (1-6): ")
+        if pilihan == "Lihat Buku":
+            if admin.lihat_buku(data.books):
+                print("\nData buku berhasil ditampilkan.")
+            else:
+                print("\nTidak ada buku untuk ditampilkan.")
+            input("\nTekan Enter untuk kembali...")
 
-        if pilih == "1":
-            admin.lihat_buku()
-        elif pilih == "2":
-            admin.tambah_buku()
-        elif pilih == "3":
-            admin.ubah_buku()
-        elif pilih == "4":
+        elif pilihan == "Tambah Buku":
+            if admin.tambah_buku(data.books):
+                print("\nBuku baru berhasil disimpan.")
+            else:
+                print("\nGagal menambah buku.")
+            input("\nTekan Enter untuk kembali...")
+
+        elif pilihan == "Ubah Buku":
+            if admin.ubah_buku(data.books):
+                print("\nData buku berhasil diperbarui.")
+            else:
+                print("\nTidak ada yang diubah.")
+            input("\nTekan Enter untuk kembali...")
+
+        elif pilihan == "Hapus Buku":
             admin.hapus_buku()
-        elif pilih == "5":
-            print("\nLogout berhasil.")
+
+        elif pilihan == "Logout":
+            login.logout_admin()
             break
-        elif pilih == "6":
-            print("\nTerima kasih telah menggunakan program ini.")
+
+        elif pilihan == "Keluar":
+            print("\nTerima kasih sudah menggunakan program ini!")
             exit()
-        else:
-            print("Pilihan tidak valid!")
-            input("Tekan Enter untuk lanjut...")
