@@ -2,7 +2,6 @@ import os
 from prettytable import PrettyTable
 import data
 
-# Variabel global
 menu_utama = ["Lihat Buku", "Tambah Buku", "Ubah Buku", "Hapus Buku", "Logout", "Keluar"]
 
 def clear():
